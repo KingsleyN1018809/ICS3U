@@ -33,3 +33,17 @@ else:
     print("Choose A, B, or C")
 
 #Modify 2:
+grade = int(input("Please enter your grade: "))
+
+if (grade >= 80 and grade <= 100):
+    print("You got an A")
+elif (grade >= 70 and grade <= 79):
+    print("You got a B")
+elif (grade >= 60 and grade <= 69):
+    print("You got a C")
+elif (grade >= 50 and grade <= 59):
+    print("You got a D")
+elif (grade >= 0 and grade <= 49):
+    print("You got a F")
+else:
+    print("invalid grade")
