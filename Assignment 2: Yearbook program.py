@@ -51,7 +51,7 @@ def minimum_perimeter(N):
     y = N / x
     #Find perimeter
     perimeter = 2 * (x + y)
-    print("Minimum perimeter is %d with demensions of %d x %d" % (perimeter, x, y))
+    print("Minimum perimeter is %d with dimensions of %d x %d" % (perimeter, x, y))
 
 #Start of the program with a welcome output
 print("Welcome to the school yearbook program!")
