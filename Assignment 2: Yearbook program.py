@@ -77,6 +77,16 @@ while not done:
             print("Goodbye!")
             #Exit program
             break
+        #Easter egg, backward done
+        elif user.lower() == "enod":
+            #Set valid to true
+            valid = True
+            #Set done to true
+            done = True
+            #Print !eybdooG
+            print("!eybdooG")
+            #Exit program
+            break
         #Create try
         try:
             #Set user_int to integer of user input
