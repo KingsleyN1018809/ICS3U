@@ -66,7 +66,7 @@ while not done:
     num_photos = 0
     while not valid:
         #Ask for user input
-        user = input("Please input your number of photograpghs: ")
+        user = input("Please input your number of photograpghs or done to exit the program: ")
         #Check user input to see if it "done"
         if user.lower() == "done":
             #Set valid to true
