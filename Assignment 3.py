@@ -143,7 +143,18 @@ while not valid:
         # Promt user to choose a filename and set valid to true
         filename = input("Enter the file name: ")
         valid = True
-
+#Set file name as None
+fh = None
+try:
+    #open fh using filename
+    fh = open(filename, "r")
+except:
+    #Print file not found if there isn't a file to read
+    print("File not found")
+    #Print exiting
+    print("exiting")
+    #Exit the program
+    exit()
 # Set valid to false
 valid = False
 # Loop until a valid option is chosen
@@ -186,7 +197,6 @@ colorDefs = getColorData(fh, numColors, cols, )
 imageData = getImageData(fh, rows, cols, colorDefs)
 # Close the file
 fh.close()
-
 # Print the dimensions of the image
 print("\nDimensions: %d x %d" % (rows, cols))
 # Print the number of colors
