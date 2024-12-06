@@ -181,9 +181,9 @@ cols = int(cols)
 numColors = int(numColors)
 
 # Call getColorData function and set it to colorDefs
-colorDefs = getColorData(fh, numColors)
+colorDefs = getColorData(fh, numColors, cols, )
 # Call getImageData function and set it to imageData
-imageData = getImageData(fh, rows, colorDefs)
+imageData = getImageData(fh, rows, cols, colorDefs)
 # Close the file
 fh.close()
 
