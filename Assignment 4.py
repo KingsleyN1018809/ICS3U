@@ -1,3 +1,42 @@
+"""
+Author: Kingsley Nguyen
+Student number: 1018809
+Revision date: 12/19/2024
+Program : Reading files and searching for data
+Description : Reads Wordle data from a file and allows the user to search for specific words or dates. 
+VARIABLE DICTIONARY :
+    filename: str - Name of the file containing Wordle data
+    fh: file object - File handle for reading the Wordle data file
+    lines: list - List of lines read from the file
+    words: list - List to store words from the file
+    dates: list - List to store dates from the file
+    line: str - A single line read from the file
+    month: str - Month component of the date
+    day: str - Day component of the date
+    year: str - Year component of the date
+    word: str - Word from the file
+    myDate: int - Merged date in integer format
+    startDate: int - The earliest date in the dates list
+    endDate: int - The latest date in the dates list
+    original_dates: list - Copy of the dates list to maintain original order
+    original_words: list - Copy of the words list to maintain original order
+    valid: bool - Flag to validate user input
+    userOption: str - User's choice for search option
+    userInput: str - User's input word for search
+    date: int - Date corresponding to the user's input word
+    year: str - User's input year for date search
+    month: str - User's input month for date search
+    day: str - User's input day for date search
+"""
+
+"""
+Function to perform merge sort on two arrays.
+Parameters:
+    arr (list): Array to be sorted.
+    arr2 (list): Second array to be sorted.
+    l (int): Left index of the subarray.
+    r (int): Right index of the subarray.
+"""
 def mergeSort(arr, arr2, l, r):
     if l < r:
         # Same as (l+r)//2, but avoids overflow
