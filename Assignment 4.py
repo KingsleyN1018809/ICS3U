@@ -38,9 +38,10 @@ Parameters:
     r (int): Right index of the subarray.
 """
 def mergeSort(arr, arr2, l, r):
+    # Check if the subarray has more than one element
     if l < r:
-        # Same as (l+r)//2, but avoids overflow
-        # for large l and h
+        # Find the middle point to divide the array into two halves
+        # Avoids potential overflow for large values of l and r
         m = l + (r - l) // 2
         
         # Sort first and second halves
@@ -48,6 +49,15 @@ def mergeSort(arr, arr2, l, r):
         mergeSort(arr, arr2, m + 1, r)
         mergeSortMerge(arr, arr2, l, m, r)
 
+"""
+Function to merge two sorted arrays.
+Parameters:
+    arr (list): Array to be sorted.
+    arr2 (list): Second array to be sorted.
+    l (int): Left index of the subarray.
+    m (int): Middle index of the subarray.
+    r (int): Right index of the subarray.
+"""
 def mergeSortMerge(arr, arr2, l, m, r):
     n1 = m - l + 1
     n2 = r - m
@@ -92,27 +102,49 @@ def mergeSortMerge(arr, arr2, l, m, r):
         j += 1
         k += 1 
 
+"""
+Function to merge year, month, and day into a single integer.
+Parameters:
+    year (str): Year component of the date.
+    month (str): Month component of the date.
+    day (str): Day component of the date.
+"""
 def merge(year, month, day):
     try:
         months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
         line_int = ""
         line_int += year
-        month_str = str(months.index(month.lower()) + 1)
-        if len(month_str) == 1:
-            month_str = "0" + month_str
+        month_str = ""
+        for i in range(len(months)):
+            if months[i] == month.lower():
+                month_str += str(i + 1)
+                if len(month_str) == 1:
+                    month_str = "0" + month_str
         line_int += month_str
         line_int += day
         return(int(line_int))
     except:
         return 0
 
+"""
+Function to search for a word or date in a sorted array.
+Parameters:
+    A (str): Word or date to be searched.
+    arr1 (list): Array to be searched.
+    arr2 (list): Second array to return result.
+"""
 def isMatch(A, arr1, arr2):
     index = binarySearch(arr1, A)
     if index != -1:
         return arr2[index]
     return 0
 
-# Binary search function to find the index of x in arr
+"""
+Function to perform binary search on a sorted array.
+Parameters:
+    arr (list): Array to be searched.
+    x (int): Element to be searched.
+"""
 def binarySearch(arr, x):
     l, r = 0, len(arr) - 1
     while l <= r:
