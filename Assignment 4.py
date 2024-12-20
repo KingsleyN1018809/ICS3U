@@ -61,7 +61,7 @@ Parameters:
 def mergeSortMerge(arr, arr2, l, m, r):
     n1 = m - l + 1
     n2 = r - m
-    # create temp arrays
+    # Create temp arrays
     L = [0] * (n1)
     R = [0] * (n2)
     L2 = [0] * (n1)
@@ -87,15 +87,13 @@ def mergeSortMerge(arr, arr2, l, m, r):
             arr2[k] = R2[j]
             j += 1
         k += 1
-    # Copy the remaining elements of L[], if there
-    # are any
+    # Copy the remaining elements of L[], if there are any
     while i < n1:
         arr[k] = L[i]
         arr2[k] = L2[i]
         i += 1
         k += 1
-    # Copy the remaining elements of R[], if there
-    # are any
+    # Copy the remaining elements of R[], if there are any
     while j < n2:
         arr[k] = R[j]
         arr2[k] = R2[j]
@@ -111,17 +109,24 @@ Parameters:
 """
 def merge(year, month, day):
     try:
+        # Defines array of months in order
         months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+        # Defines empty string
         line_int = ""
+        # Adds year to string
         line_int += year
         month_str = ""
+        # Sets month_str to the correct number by checking index of months list
         for i in range(len(months)):
             if months[i] == month.lower():
                 month_str += str(i + 1)
+                # Adds a leading zero to single digit month
                 if len(month_str) == 1:
                     month_str = "0" + month_str
+        # Adds month_str and day to the string
         line_int += month_str
         line_int += day
+        # Return in type int
         return(int(line_int))
     except:
         return 0
@@ -134,7 +139,9 @@ Parameters:
     arr2 (list): Second array to return result.
 """
 def isMatch(A, arr1, arr2):
-    index = binarySearch(arr1, A)
+    # Set index to returned value of binarySearch
+    index = binarySearch(arr1, 0, len(arr2) - 1, A)
+    # If index is valid
     if index != -1:
         return arr2[index]
     return 0
@@ -145,17 +152,22 @@ Parameters:
     arr (list): Array to be searched.
     x (int): Element to be searched.
 """
-def binarySearch(arr, x):
-    l, r = 0, len(arr) - 1
-    while l <= r:
-        mid = l + (r - l) // 2
+def binarySearch(arr, low, high, x):
+    # Check base case
+    if high >= low:
+        mid = (high + low) // 2
+        # If x is at the middle
         if arr[mid] == x:
             return mid
-        elif arr[mid] < x:
-            l = mid + 1
+        # If x is smaller than mid, then it is present in left subarray
+        elif arr[mid] > x:
+            return binarySearch(arr, low, mid - 1, x)
+        # x is present in right subarray
         else:
-            r = mid - 1
-    return -1
+            return binarySearch(arr, mid + 1, high, x)
+    else:
+        # x is not present in the array
+        return -1
 
 # Open the file containing Wordle data
 filename = "wordle.dat"
@@ -221,7 +233,7 @@ elif userOption == "d":
         year = input("Enter the year: ")
         month = input("Enter the month (3-letter abbreviation, as in 'Jan' for 'January'): ")
         day = input("Enter the day: ")
-        # Pad single-digit days with a leading zero
+        # Adds a leading zero to single digit day
         if len(day) == 1:
             day = "0" + day
         # Merge date components into a single date
