@@ -104,38 +104,59 @@ def merge(arr, arr2, arr3, arr4, l, m, r):
         j += 1
         k += 1
 
-
+# Open the file
 filename = "data.dat"
 fh = open(filename, 'r')
 
+# Create lists for names, cc numbers, cc types, and expiry dates
 names = []
 cc_nums = []
 cc_types = []
 expiry_dates = []
 
+# Read all the lines from file in add data into lists
 lines = fh.readlines()
+# Remove first line from the list
 first_line = lines.pop(0)
 for line in lines:
+    # Split each line into components
     given_name, surname, cc_type, cc_number, exp_mo, exp_yr = line.strip().split(',')
+    # Add first and last name together
     name = given_name + ' ' + surname
+    # Add name to names list
     names.append(name)
+    # Add cc_type to list
     cc_types.append(cc_type)
+    # Add cc_number to list
     cc_nums.append(cc_number)
+    # Adds a leading zero to single digit month
     if len(exp_mo) == 1:
         exp_mo = '0' + exp_mo
+    # Adds month and year together into expiry_date
     expiry_date = exp_yr + exp_mo
+    # Add expiry_date to list in type int
     expiry_dates.append(int(expiry_date))
 
+# Close the file
 fh.close()
 
+# Sort the lists using merge sort
 mergeSort(expiry_dates, names, cc_nums, cc_types, 0, len(expiry_dates) - 1)
+# Open the output file
 output_file = open("output.txt","w")
+# Loop through the expiry_dates list
 for i in range(len(expiry_dates)):
+    # Break if the expiry date is larger than 202501, meaning it is not expiried
     if expiry_dates[i] > 202501:
         break
+    # Set expired_text string
     expired_text = "RENEW IMMEDIATELY"
+    # If expiry date is lower than 202501 than set string to EXPIRED
     if expiry_dates[i] < 202501:
         expired_text = "EXPIRED"
-    print("%-35s %-15s %-20s %-8s %-15s" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
-    output_file.write("%-35s %-15s %-20s %-8s %-15s\n" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    # Print the data
+    print("%-35s %-15s %-20s %-10s %-15s" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    # Write data to output file
+    output_file.write("%-35s %-15s %-20s %-10s %-15s\n" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+# Close the output file
 output_file.close()
