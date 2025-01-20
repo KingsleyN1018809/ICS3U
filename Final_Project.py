@@ -143,7 +143,8 @@ fh.close()
 # Sort the lists using merge sort
 mergeSort(expiry_dates, names, cc_nums, cc_types, 0, len(expiry_dates) - 1)
 # Open the output file
-output_file = open("output.txt","w")
+output_file_name = "output.txt"
+output_file = open(output_file_name,"w")
 # Loop through the expiry_dates list
 for i in range(len(expiry_dates)):
     # Break if the expiry date is larger than 202501, meaning it is not expiried
@@ -155,8 +156,9 @@ for i in range(len(expiry_dates)):
     if expiry_dates[i] < 202501:
         expired_text = "EXPIRED"
     # Print the data
-    print("%-35s %-15s %-20s %-10s %-15s" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    print("%-35s %-15s %-20s %-10s %-15s" % (names[i] + ':', cc_types[i], '#' + cc_nums[i], expiry_dates[i], expired_text))
     # Write data to output file
-    output_file.write("%-35s %-15s %-20s %-10s %-15s\n" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    output_file.write("%-35s %-15s %-20s %-10s %-15s\n" % (names[i] + ':', cc_types[i], '#' + cc_nums[i], expiry_dates[i], expired_text))
 # Close the output file
 output_file.close()
+print("\nOutput sent to %s" % output_file_name)
